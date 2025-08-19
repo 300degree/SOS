@@ -22,13 +22,13 @@
 
 
 #define FC_SHMEM_PTR FC_FUNC_(shmem_ptr, SHMEM_PTR)
-void* FC_SHMEM_PTR(void **target, fortran_integer_t *pe);
+void* FC_SHMEM_PTR(void **dest, fortran_integer_t *pe);
 void*
-FC_SHMEM_PTR(void **target, fortran_integer_t *pe)
+FC_SHMEM_PTR(void **dest, fortran_integer_t *pe)
 {
     SHMEM_ERR_CHECK_INITIALIZED();
     SHMEM_ERR_CHECK_PE(*pe);
-    SHMEM_ERR_CHECK_SYMMETRIC(target, 1);
+    SHMEM_ERR_CHECK_SYMMETRIC(dest, 1);
 
-    return shmem_internal_ptr(*target, *pe);
+    return shmem_internal_ptr(*dest, *pe);
 }
